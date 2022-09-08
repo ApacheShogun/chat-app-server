@@ -19,16 +19,12 @@ const io = new Server(server, {
   },
 });
 
-let users = []
-
 io.on("connection", (socket) => {
   console.log("deh user connected", socket.id);
 
   socket.on("join_chat", (data) => {
     socket.join(data.room);
     console.log(`user ${data.username} has joined room ${data.room}`);
-    users.push(data)
-    console.log(users);
     io.to(data.room).emit("user_connected", ` ${data.username} has connected`);
   });
 
