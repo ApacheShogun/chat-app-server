@@ -6,6 +6,9 @@ const { Server } = require("socket.io");
 require('dotenv').config()
 
 app.use(cors());
+app.use('/', (req, res) => {
+  res.send('deh socket io server parna!')
+})
 
 const server = http.createServer(app);
 
